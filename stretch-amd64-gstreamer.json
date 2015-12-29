@@ -58,6 +58,18 @@
     {
       "output": "builds/{{user `box_basename`}}.{{.Provider}}.box",
       "type": "vagrant"
+    },
+    {
+      "artifact": "{{user `atlas_username`}}/{{user `atlas_name`}}",
+      "artifact_type": "vagrant.box",
+      "metadata": {
+        "provider": "virtualbox",
+        "version": "0.0.1"
+      },
+      "only": [
+        "virtualbox-iso"
+      ],
+      "type": "atlas"
     }
   ],
   "provisioners": [
@@ -82,7 +94,13 @@
       "type": "shell"
     }
   ],
+  "push": {
+    "name": "{{ .Name }}",
+    "vcs": true
+  },
   "variables": {
+    "atlas_name": "{{env `ATLAS_NAME`}}",
+    "atlas_username": "{{env `ATLAS_USERNAME`}}",
     "box_basename": "stretch-amd64-gstreamer",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "git_revision": "__unknown_git_revision__",
@@ -102,3 +120,4 @@
     "version": "0.1.0"
   }
 }
+

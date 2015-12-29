@@ -7,7 +7,7 @@ apt-get update;
 apt-get -y upgrade linux-image-$arch;
 apt-get -y install linux-headers-`uname -r`;
 
-apt-get -y --install-suggests install build-essential libconfig-dev libgstrtspserver-1.0-dev
+apt-get -y install build-essential libconfig-dev libgstrtspserver-1.0-dev
 
 if [ -d /etc/init ]; then
     # update package index on boot

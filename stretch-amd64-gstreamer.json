@@ -57,7 +57,8 @@
   "post-processors": [
     [{
       "output": "builds/{{user `box_basename`}}.{{.Provider}}.box",
-      "type": "vagrant"
+      "type": "vagrant",
+      "keep_input_artifact": false
     },
     {
       "artifact": "{{user `atlas_username`}}/{{user `atlas_name`}}",
@@ -89,6 +90,7 @@
         "scripts/vagrant.sh",
         "scripts/vmtools.sh",
         "scripts/cleanup.sh",
+        "scripts/install.sh",
         "scripts/minimize.sh"
       ],
       "type": "shell"
@@ -104,7 +106,7 @@
     "box_basename": "stretch-amd64-gstreamer",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "git_revision": "__unknown_git_revision__",
-    "headless": "",
+    "headless": "true",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
     "iso_checksum": "f1ca86724a7c9361b06032e3c63ef7bb64388ff0af1dbb0213c5bef0c27813a7",
